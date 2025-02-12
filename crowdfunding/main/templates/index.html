@@ -1,0 +1,9 @@
+<!-- index.html -->
+{% extends "base.html" %}
+{% block content %}
+    <div class="hero-section text-center py-5" style="background-color: var(--secondary-bg);">
+        <h1>Welcome to Crowdfunding</h1>
+        <p>Support great ideas and bring them to life</p>
+        <a href="{% url 'campaigns' %}" class="btn btn-dark">Fund Me</a>
+    </div>
+{% endblock %}

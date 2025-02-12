@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Register a New Campaign</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary" onclick="showSuccessDialog(event)">Submit</button>
+    </form>
+</div>
+
+<!-- Success Modal -->
+<div id="successModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Campaign registered successfully!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="redirectToCampaigns()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showSuccessDialog(event) {
+        event.preventDefault();
+        document.querySelector('form').submit();
+        var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        successModal.show();
+    }
+
+    function redirectToCampaigns() {
+        window.location.href = "{% url 'campaigns' %}";
+    }
+</script>
+{% endblock %}

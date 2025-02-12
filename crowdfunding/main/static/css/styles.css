@@ -1,0 +1,20 @@
+/* <!-- style.css --> */
+:root {
+    --primary-bg: #f5f5dc; /* Beige */
+    --secondary-bg: #ffffff; /* White */
+    --text-color: #333333;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: var(--secondary-bg) !important;
+}
+
+.container {
+    max-width: 1200px;
+}

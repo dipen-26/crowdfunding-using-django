@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Login</h2>
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        <label>Username:</label>
+        <input type="text" name="username" class="form-control">
+        <label>Password:</label>
+        <input type="password" name="password" class="form-control">
+        <button type="submit" class="btn btn-primary mt-3">Login</button>
+    </form>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+</div>
+{% endblock %}

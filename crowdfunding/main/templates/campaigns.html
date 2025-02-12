@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <aside class="col-md-3 bg-light p-3">
+        <h4>Sort Campaigns</h4>
+        <p>Category:</p>
+        <select class="form-select mb-2">
+            <option>All</option>
+            <option>Technology</option>
+            <option>Health</option>
+            <option>Education</option>
+        </select>
+        <p>Priority:</p>
+        <select class="form-select">
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+    </aside>
+
+    <div class="col-md-9">
+        <div class="d-flex justify-content-between">
+            <input type="text" class="form-control w-75" placeholder="Search campaigns">
+            <button class="btn btn-dark">Search</button>
+            <a class="btn btn-info" href="{% url 'register_campaign' %}">Register Campaign</a>
+        </div>
+
+        <div class="row mt-3">
+            {% for campaign in campaigns %}
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    {% if campaign.images.all %}
+                    <img src="{{ campaign.images.first.image.url }}" class="card-img-top" alt="Campaign Image">
+                    {% else %}
+                    <img src="/static/images/default.jpg" class="card-img-top" alt="Default Image">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ campaign.title }}</h5>
+                        <p class="card-text">{{ campaign.description|truncatechars:50 }}</p>
+                        <a href="{% url 'campaign_details' campaign.id %}" class="btn btn-dark">View</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>No campaigns available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
