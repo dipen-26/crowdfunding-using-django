@@ -1,9 +1,33 @@
-<!-- index.html -->
 {% extends "base.html" %}
+{% load static %}
+
 {% block content %}
-    <div class="hero-section text-center py-5" style="background-color: var(--secondary-bg);">
-        <h1>Welcome to Crowdfunding</h1>
-        <p>Support great ideas and bring them to life</p>
-        <a href="{% url 'campaigns' %}" class="btn btn-dark">Fund Me</a>
-    </div>
+    <section id="home" class="page-section">
+        <div class="hero-content">
+            <h1 class="display-1 fw-bold mb-4">Welcome to Crowdfunding</h1>
+            <p class="lead mb-5 text-muted">Support great ideas and bring them to life</p>
+            <a href="#campaigns" class="cta-button btn-lg px-5 py-3">Fund Me</a>
+        </div>
+    </section>
+
+    <section id="campaigns" class="page-section py-5">
+        <div class="container" style="padding: 7%">
+            <h2 class="text-center mb-5">Featured Campaigns</h2>
+            {% include 'campaigns.html' %}
+        </div>
+    </section>
+
+    <section id="faqs" class="page-section py-5 bg-light">
+        <div class="container" style="padding: 7%">
+            <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+            {% include 'faqs.html' %}
+        </div>
+    </section>
+
+    <section id="about" class="page-section py-5">
+        <div class="container" style="padding: 7%">
+            <h2 class="text-center mb-5">About Us</h2>
+            {% include 'about.html' %}
+        </div>
+    </section>
 {% endblock %}
